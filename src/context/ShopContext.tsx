@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useMemo, ReactNode } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import { Product, CartItem } from "../types";
 
 const INITIAL_PRODUCTS: Product[] = [
@@ -170,6 +171,8 @@ export const ShopProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
 
   const toggleTheme = () => setIsDarkMode(!isDarkMode);
 
@@ -183,20 +186,21 @@ export const ShopProvider = ({ children }: { children: ReactNode }) => {
 
   const navigateToProduct = (product: Product) => {
     setCurrentProduct(product);
-    setCurrentView("product");
+    router.push(`/product/${product.id}`);
     window.scrollTo(0, 0);
   };
 
   const navigateToHome = () => {
     setCurrentView("home");
+    if (pathname !== "/") {
+      router.push("/");
+    }
     window.scrollTo(0, 0);
   };
 
   const navigateToAdmin = () => {
-    if (isAdminAuthenticated) {
-      setCurrentView("admin_dashboard");
-    } else {
-      setCurrentView("admin_login");
+    if (pathname !== "/admin") {
+      router.push("/admin");
     }
     window.scrollTo(0, 0);
   };

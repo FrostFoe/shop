@@ -2,8 +2,7 @@
 
 import React from "react";
 import { useShop } from "../context/ShopContext";
-import { CartIcon } from "./Icons";
-import { X } from "lucide-react";
+import { ShoppingCart, X } from "lucide-react";
 
 export const CartDrawer = () => {
   const { isCartOpen, setIsCartOpen, cart, navigateToCheckout } = useShop();
@@ -30,7 +29,7 @@ export const CartDrawer = () => {
 
         {cart.length === 0 ? (
           <div className="flex h-full flex-col items-center justify-center space-y-2">
-            <CartIcon className="h-12 w-12 text-neutral-400" />
+            <ShoppingCart className="h-12 w-12 text-neutral-400" />
             <p className="text-neutral-500">আপনার কার্ট খালি।</p>
           </div>
         ) : (

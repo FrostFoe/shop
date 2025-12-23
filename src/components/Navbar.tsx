@@ -2,7 +2,8 @@
 
 import React from "react";
 import { useShop } from "../context/ShopContext";
-import { LogoIcon, MenuIcon, SearchIcon, MoonIcon, SunIcon, CartIcon } from "./Icons";
+import { LogoIcon } from "./Icons";
+import { Menu, Search, Moon, Sun, ShoppingCart } from "lucide-react";
 
 export const Navbar = () => {
   const {
@@ -26,7 +27,7 @@ export const Navbar = () => {
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors md:hidden dark:border-neutral-700 dark:text-white"
         >
-          <MenuIcon className="h-4" />
+          <Menu className="h-4" />
         </button>
       </div>
       {isMobileMenuOpen && (
@@ -113,7 +114,7 @@ export const Navbar = () => {
               className="text-md w-full rounded-lg border bg-white px-4 py-2 text-black placeholder:text-neutral-500 md:text-sm dark:border-neutral-800 dark:bg-transparent dark:text-white dark:placeholder:text-neutral-400"
             />
             <div className="absolute right-0 top-0 mr-3 flex h-full items-center">
-              <SearchIcon className="h-4" />
+              <Search className="h-4" />
             </div>
           </div>
         </div>
@@ -124,14 +125,14 @@ export const Navbar = () => {
             className="relative flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors dark:border-neutral-700 dark:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800"
           >
             {isDarkMode ? (
-              <MoonIcon className="h-4 transition-all ease-in-out hover:scale-110" />
+              <Moon className="h-4 transition-all ease-in-out hover:scale-110" />
             ) : (
-              <SunIcon className="h-4 transition-all ease-in-out hover:scale-110" />
+              <Sun className="h-4 transition-all ease-in-out hover:scale-110" />
             )}
           </button>
           <button aria-label="Open cart" onClick={() => setIsCartOpen(true)}>
             <div className="relative flex h-11 w-11 items-center justify-center rounded-md border border-neutral-200 text-black transition-colors dark:border-neutral-700 dark:text-white">
-              <CartIcon className="h-4 transition-all ease-in-out hover:scale-110" />
+              <ShoppingCart className="h-4 transition-all ease-in-out hover:scale-110" />
               {cart.length > 0 && (
                 <div className="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-blue-600 text-[10px] font-bold text-white flex items-center justify-center">
                   {cart.length}

@@ -1,13 +1,13 @@
 "use client";
 
 import React from "react";
-import { useShop } from "../context/ShopContext";
+import Link from "next/link";
+import { useShop } from "@/context/ShopContext";
 import { LogoIcon } from "./Icons";
 import { Menu, Search, Moon, Sun, ShoppingCart } from "lucide-react";
 
 export const Navbar = () => {
   const {
-    navigateToHome,
     isDarkMode,
     toggleTheme,
     cart,
@@ -72,13 +72,9 @@ export const Navbar = () => {
 
       <div className="flex w-full items-center">
         <div className="flex w-full md:w-1/3">
-          <a
+          <Link
             className="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6"
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              navigateToHome();
-            }}
+            href="/"
           >
             <div className="flex flex-none items-center justify-center border border-neutral-200 bg-white dark:border-neutral-700 dark:bg-black h-[40px] w-[40px] rounded-xl">
               <LogoIcon className="h-4 w-4 fill-black dark:fill-white h-[16px] w-[16px]" />
@@ -86,7 +82,7 @@ export const Navbar = () => {
             <div className="ml-2 flex-none text-sm font-medium uppercase md:hidden lg:block">
               একমি স্টোর
             </div>
-          </a>
+          </Link>
           <ul className="hidden gap-6 text-sm md:flex md:items-center">
             {[
               { id: "All", label: "সব" },

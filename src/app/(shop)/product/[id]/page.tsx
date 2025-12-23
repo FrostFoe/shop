@@ -1,8 +1,8 @@
 "use client";
 
 import React, { use } from "react";
-import { useShop } from "../../../context/ShopContext";
-import { ProductDetailsPage } from "../../../components/Pages";
+import { useShop } from "@/context/ShopContext";
+import { ProductDetailsPage } from "@/components/shop/ProductDetailsPage";
 
 export default function ProductPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);

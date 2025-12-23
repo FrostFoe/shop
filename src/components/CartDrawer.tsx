@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useShop } from "../context/ShopContext";
+import { useShop } from "@/context/ShopContext";
 import { ShoppingCart, X } from "lucide-react";
 
 export const CartDrawer = () => {

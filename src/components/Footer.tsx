@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { useShop } from "../context/ShopContext";
+import { useShop } from "@/context/ShopContext";
 import { LogoIcon } from "./Icons";
 
 export const Footer = () => {

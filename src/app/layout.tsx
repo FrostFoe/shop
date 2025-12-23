@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Hind_Siliguri } from "next/font/google";
 import "./globals.css";
-import { ShopProvider } from "../context/ShopContext";
-import { MainLayout } from "../components/MainLayout";
+import { ShopProvider } from "@/context/ShopContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,7 +35,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${hindSiliguri.variable} antialiased`}
       >
         <ShopProvider>
-          <MainLayout>{children}</MainLayout>
+          {children}
         </ShopProvider>
       </body>
     </html>

@@ -1,24 +1,19 @@
 "use client";
 
 import React from "react";
-import { Product } from "../types";
+import Link from "next/link";
+import { Product } from "@/types";
 
 export const ProductCard = ({
   product,
   className = "",
-  onClick,
 }: {
   product: Product;
   className?: string;
-  onClick?: (product: Product) => void;
 }) => (
-  <a
+  <Link
     className={`relative block h-full w-full ${className}`}
-    href="#"
-    onClick={(e) => {
-      e.preventDefault();
-      if (onClick) onClick(product);
-    }}
+    href={`/product/${product.id}`}
   >
     <div className="group flex h-full w-full items-center justify-center overflow-hidden rounded-lg border bg-white hover:border-blue-600 dark:hover:border-blue-600 dark:bg-black relative border-neutral-200 dark:border-neutral-800">
       <img
@@ -41,23 +36,17 @@ export const ProductCard = ({
         </div>
       </div>
     </div>
-  </a>
+  </Link>
 );
 
 export const SmallProductCard = ({
   product,
-  onClick,
 }: {
   product: Product;
-  onClick?: (product: Product) => void;
 }) => (
-  <a
+  <Link
     className="relative h-full w-full"
-    href="#"
-    onClick={(e) => {
-      e.preventDefault();
-      if (onClick) onClick(product);
-    }}
+    href={`/product/${product.id}`}
   >
     <div className="group flex h-full w-full items-center justify-center overflow-hidden rounded-lg border bg-white hover:border-blue-600 dark:hover:border-blue-600 dark:bg-black relative border-neutral-200 dark:border-neutral-800">
       <img
@@ -80,5 +69,5 @@ export const SmallProductCard = ({
         </div>
       </div>
     </div>
-  </a>
+  </Link>
 );

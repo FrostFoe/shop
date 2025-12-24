@@ -44,29 +44,28 @@ export const Navbar = () => {
                 সব
               </button>
             </li>
-            <li>
-              <button
-                onClick={() => {
-                  onCategoryChange("শার্ট");
-                  setIsMobileMenuOpen(false);
-                }}
-                className="w-full text-left"
-              >
-                শার্ট
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => {
-                  onCategoryChange("স্টিকার");
-                  setIsMobileMenuOpen(false);
-                }}
-                className="w-full text-left"
-              >
-                স্টিকার
-              </button>
-            </li>
-          </ul>
+                      <li>
+                        <button
+                          onClick={() => {
+                            onCategoryChange("ওয়েব অ্যাপ");
+                            setIsMobileMenuOpen(false);
+                          }}
+                          className="w-full text-left"
+                        >
+                          ওয়েব অ্যাপ
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          onClick={() => {
+                            onCategoryChange("টেম্পলেট");
+                            setIsMobileMenuOpen(false);
+                          }}
+                          className="w-full text-left"
+                        >
+                          টেম্পলেট
+                        </button>
+                      </li>          </ul>
         </div>
       )}
 
@@ -83,13 +82,12 @@ export const Navbar = () => {
               একমি স্টোর
             </div>
           </Link>
-          <ul className="hidden gap-6 text-sm md:flex md:items-center">
-            {[
-              { id: "All", label: "সব" },
-              { id: "শার্ট", label: "শার্ট" },
-              { id: "স্টিকার", label: "স্টিকার" },
-            ].map((cat) => (
-              <li key={cat.id}>
+                  <ul className="hidden gap-6 text-sm md:flex md:items-center">
+                    {[
+                      { id: "All", label: "সব" },
+                      { id: "ওয়েব অ্যাপ", label: "ওয়েব অ্যাপ" },
+                      { id: "টেম্পলেট", label: "টেম্পলেট" },
+                    ].map((cat) => (              <li key={cat.id}>
                 <button
                   className={`underline-offset-4 hover:text-black hover:underline dark:hover:text-neutral-300 ${activeCategory === cat.id ? "text-black dark:text-white underline" : "text-neutral-500 dark:text-neutral-400"}`}
                   onClick={() => onCategoryChange(cat.id)}

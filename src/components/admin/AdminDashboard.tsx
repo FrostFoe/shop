@@ -39,15 +39,15 @@ export const AdminDashboard = () => {
 
   const handleAddNew = () => {
     const newProduct: Product = {
-      id: `new-product-${Date.now()}`,
-      title: "নতুন পণ্য",
+      id: `new-project-${Date.now()}`,
+      title: "নতুন প্রজেক্ট",
       price: 0,
       currency: "BDT",
-      category: "শার্ট",
+      category: "ওয়েব অ্যাপ",
       images: ["https://placehold.co/600x600/png"],
       description: "এখানে বিবরণ দিন...",
-      colors: [],
-      sizes: [],
+      licenseTypes: [],
+      supportPeriods: [],
     };
     setProducts([newProduct, ...products]);
     startEdit(newProduct);

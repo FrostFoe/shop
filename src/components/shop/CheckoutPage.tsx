@@ -35,7 +35,7 @@ export const CheckoutPage = ({ onOrderSuccess }: CheckoutPageProps) => {
     return (
       <div className="flex min-h-[50vh] flex-col items-center justify-center p-8 text-center">
         <h2 className="text-2xl font-bold mb-4">আপনার কার্ট খালি</h2>
-        <p className="text-neutral-500 mb-8">শুরু করার জন্য কিছু পণ্য যোগ করুন।</p>
+        <p className="text-neutral-500 mb-8">শুরু করার জন্য কিছু প্রজেক্ট যোগ করুন।</p>
         <Link
           href="/"
           className="rounded-full bg-blue-600 px-6 py-3 font-semibold text-white hover:bg-blue-700"
@@ -120,7 +120,7 @@ export const CheckoutPage = ({ onOrderSuccess }: CheckoutPageProps) => {
                   <div className="flex-1">
                     <h3 className="font-medium">{item.product.title}</h3>
                     <p className="text-sm text-neutral-500">
-                      {item.selectedColor} {item.selectedSize && `/ ${item.selectedSize}`}
+                      {item.selectedLicenseType} {item.selectedSupportPeriod && `/ ${item.selectedSupportPeriod}`}
                     </p>
                     <p className="text-sm text-neutral-500">পরিমাণ: {item.quantity}</p>
                   </div>

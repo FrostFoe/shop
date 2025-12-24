@@ -5,13 +5,9 @@ import { useShop } from "@/context/ShopContext";
 import { ShoppingCart, X } from "lucide-react";
 
 export const CartDrawer = () => {
-  const { isCartOpen, setIsCartOpen, cart, navigateToCheckout } = useShop();
+  const { isCartOpen, setIsCartOpen, cart, navigateToCheckout, cartTotal } = useShop();
 
   if (!isCartOpen) return null;
-  const total = cart.reduce(
-    (acc, item) => acc + item.product.price * item.quantity,
-    0,
-  );
 
   return (
     <div className="fixed inset-0 z-50 flex justify-end">
@@ -56,8 +52,8 @@ export const CartDrawer = () => {
                         </p>
                       </div>
                       <p className="mt-1 text-sm text-neutral-500">
-                        {item.selectedColor}{" "}
-                        {item.selectedSize ? ` / ${item.selectedSize}` : ""}
+                        {item.selectedLicenseType}{" "}
+                        {item.selectedSupportPeriod ? ` / ${item.selectedSupportPeriod}` : ""}
                       </p>
                     </div>
                     <div className="flex flex-1 items-end justify-between text-sm">
@@ -70,7 +66,7 @@ export const CartDrawer = () => {
             <div className="border-t border-neutral-200 dark:border-neutral-700 py-6">
               <div className="flex justify-between text-base font-medium">
                 <p>মোট মূল্য</p>
-                <p>৳{total.toFixed(2)}</p>
+                <p>৳{cartTotal.toFixed(2)}</p>
               </div>
               <p className="mt-0.5 text-sm text-neutral-500">
                 শিপিং এবং ট্যাক্স চেকআউটের সময় হিসেব করা হবে।

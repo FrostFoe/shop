@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useLocalStorage } from "./useLocalStorage";
-import { CartItem, Product } from "../types";
+import { CartItem } from "@/types";
 
 export function useCart() {
   const [cart, setCart] = useLocalStorage<CartItem[]>("cart", []);
@@ -13,8 +13,8 @@ export function useCart() {
       const existing = prev.find(
         (i) =>
           i.product.id === item.product.id &&
-          i.selectedColor === item.selectedColor &&
-          i.selectedSize === item.selectedSize
+          i.selectedLicenseType === item.selectedLicenseType &&
+          i.selectedSupportPeriod === item.selectedSupportPeriod
       );
       if (existing) {
         return prev.map((i) =>
@@ -26,14 +26,14 @@ export function useCart() {
     setIsCartOpen(true);
   };
 
-  const removeFromCart = (productId: string, color?: string, size?: string) => {
+  const removeFromCart = (productId: string, licenseType?: string, supportPeriod?: string) => {
     setCart((prev) =>
       prev.filter(
         (i) =>
           !(
             i.product.id === productId &&
-            i.selectedColor === color &&
-            i.selectedSize === size
+            i.selectedLicenseType === licenseType &&
+            i.selectedSupportPeriod === supportPeriod
           )
       )
     );
@@ -42,18 +42,18 @@ export function useCart() {
   const updateQuantity = (
     productId: string,
     quantity: number,
-    color?: string,
-    size?: string
+    licenseType?: string,
+    supportPeriod?: string
   ) => {
     if (quantity <= 0) {
-      removeFromCart(productId, color, size);
+      removeFromCart(productId, licenseType, supportPeriod);
       return;
     }
     setCart((prev) =>
       prev.map((i) =>
         i.product.id === productId &&
-        i.selectedColor === color &&
-        i.selectedSize === size
+        i.selectedLicenseType === licenseType &&
+        i.selectedSupportPeriod === supportPeriod
           ? { ...i, quantity }
           : i
       )

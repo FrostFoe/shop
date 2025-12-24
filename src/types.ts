@@ -5,14 +5,14 @@ export type Product = {
   currency: string;
   category: string;
   images: string[];
-  colors?: string[];
-  sizes?: string[];
+  licenseTypes?: string[];
+  supportPeriods?: string[];
   description: string;
 };
 
 export type CartItem = {
   product: Product;
-  selectedColor?: string;
-  selectedSize?: string;
+  selectedLicenseType?: string;
+  selectedSupportPeriod?: string;
   quantity: number;
 };

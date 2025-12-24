@@ -50,7 +50,7 @@ export const ProductForm = ({
     <div className="grid gap-4 md:grid-cols-2 p-4 bg-neutral-50 dark:bg-neutral-900 rounded-lg">
       <div className="space-y-2">
         <label className="block text-xs font-bold text-neutral-500 uppercase">
-          শিরোনাম *
+          প্রজেক্ট শিরোনাম *
         </label>
         <input
           className="w-full rounded border border-neutral-300 p-2 dark:border-neutral-700 dark:bg-black"
@@ -68,9 +68,10 @@ export const ProductForm = ({
           value={product.category}
           onChange={(e) => onChange({ ...product, category: e.target.value })}
         >
-          <option value="শার্ট">শার্ট</option>
-          <option value="স্টিকার">স্টিকার</option>
-          <option value="এক্সেসরিজ">এক্সেসরিজ</option>
+          <option value="ওয়েব অ্যাপ">ওয়েব অ্যাপ</option>
+          <option value="টেম্পলেট">টেম্পলেট</option>
+          <option value="ব্যাকএন্ড">ব্যাকএন্ড</option>
+          <option value="সফটওয়্যার">সফটওয়্যার</option>
         </select>
       </div>
       <div className="space-y-2">

@@ -9,11 +9,11 @@ import { Product } from "@/types";
 export const ProductDetailsPage = ({ product }: { product: Product }) => {
   const { addToCart, products } = useShop();
   const [selectedImage, setSelectedImage] = useState(product.images[0]);
-  const [selectedColor, setSelectedColor] = useState(
-    product.colors ? product.colors[0] : undefined,
+  const [selectedLicenseType, setSelectedLicenseType] = useState(
+    product.licenseTypes ? product.licenseTypes[0] : undefined,
   );
-  const [selectedSize, setSelectedSize] = useState(
-    product.sizes ? product.sizes[0] : undefined,
+  const [selectedSupportPeriod, setSelectedSupportPeriod] = useState(
+    product.supportPeriods ? product.supportPeriods[0] : undefined,
   );
   const [imageIndex, setImageIndex] = useState(0);
 
@@ -31,7 +31,7 @@ export const ProductDetailsPage = ({ product }: { product: Product }) => {
   };
 
   const isAddToCartEnabled =
-    (!product.colors || selectedColor) && (!product.sizes || selectedSize);
+    (!product.licenseTypes || selectedLicenseType) && (!product.supportPeriods || selectedSupportPeriod);
 
   const relatedProducts = products
     .filter((p) => p.category === product.category && p.id !== product.id)
@@ -120,36 +120,34 @@ export const ProductDetailsPage = ({ product }: { product: Product }) => {
               </div>
             </div>
 
-            {product.colors && (
+            {product.licenseTypes && (
               <dl className="mb-8">
-                <dt className="mb-4 text-sm uppercase tracking-wide">রঙ</dt>
+                <dt className="mb-4 text-sm uppercase tracking-wide">লাইসেন্স টাইপ</dt>
                 <dd className="flex flex-wrap gap-3">
-                  {product.colors.map((color) => (
+                  {product.licenseTypes.map((type) => (
                     <button
-                      key={color}
-                      onClick={() => setSelectedColor(color)}
-                      title={`Color ${color}`}
-                      className={`flex min-w-[48px] items-center justify-center rounded-full border px-2 py-1 text-sm transition duration-300 ease-in-out ${selectedColor === color ? "ring-2 ring-blue-600 bg-neutral-100 dark:bg-neutral-900 border-blue-600" : "bg-neutral-100 dark:bg-neutral-900 border-transparent hover:ring-blue-600 dark:border-neutral-800"}`}
+                      key={type}
+                      onClick={() => setSelectedLicenseType(type)}
+                      className={`flex min-w-[48px] items-center justify-center rounded-full border px-4 py-1 text-sm transition duration-300 ease-in-out ${selectedLicenseType === type ? "ring-2 ring-blue-600 bg-neutral-100 dark:bg-neutral-900 border-blue-600" : "bg-neutral-100 dark:bg-neutral-900 border-transparent hover:ring-blue-600 dark:border-neutral-800"}`}
                     >
-                      {color}
+                      {type}
                     </button>
                   ))}
                 </dd>
               </dl>
             )}
 
-            {product.sizes && (
+            {product.supportPeriods && (
               <dl className="mb-8">
-                <dt className="mb-4 text-sm uppercase tracking-wide">সাইজ</dt>
+                <dt className="mb-4 text-sm uppercase tracking-wide">সাপোর্ট মেয়াদ</dt>
                 <dd className="flex flex-wrap gap-3">
-                  {product.sizes.map((size) => (
+                  {product.supportPeriods.map((period) => (
                     <button
-                      key={size}
-                      onClick={() => setSelectedSize(size)}
-                      title={`Size ${size}`}
-                      className={`flex min-w-[48px] items-center justify-center rounded-full border px-2 py-1 text-sm transition duration-300 ease-in-out ${selectedSize === size ? "ring-2 ring-blue-600 bg-neutral-100 dark:bg-neutral-900 border-blue-600" : "bg-neutral-100 dark:bg-neutral-900 border-transparent hover:ring-blue-600 dark:border-neutral-800"}`}
+                      key={period}
+                      onClick={() => setSelectedSupportPeriod(period)}
+                      className={`flex min-w-[48px] items-center justify-center rounded-full border px-4 py-1 text-sm transition duration-300 ease-in-out ${selectedSupportPeriod === period ? "ring-2 ring-blue-600 bg-neutral-100 dark:bg-neutral-900 border-blue-600" : "bg-neutral-100 dark:bg-neutral-900 border-transparent hover:ring-blue-600 dark:border-neutral-800"}`}
                     >
-                      {size}
+                      {period}
                     </button>
                   ))}
                 </dd>
@@ -160,10 +158,10 @@ export const ProductDetailsPage = ({ product }: { product: Product }) => {
               {product.description}
             </div>
             <button
-              aria-label="Add To Cart"
+              aria-label="Buy Project"
               onClick={() =>
                 isAddToCartEnabled &&
-                addToCart({ product, selectedColor, selectedSize, quantity: 1 })
+                addToCart({ product, selectedLicenseType, selectedSupportPeriod, quantity: 1 })
               }
               disabled={!isAddToCartEnabled}
               className={`relative flex w-full items-center justify-center rounded-full bg-blue-600 p-4 tracking-wide text-white ${!isAddToCartEnabled ? "cursor-not-allowed opacity-60 hover:opacity-60" : "hover:opacity-90"}`}
@@ -171,12 +169,12 @@ export const ProductDetailsPage = ({ product }: { product: Product }) => {
               <div className="absolute left-0 ml-4">
                 <Plus className="h-5" />
               </div>
-              কার্টে যোগ করুন
+              প্রজেক্ট কিনুন
             </button>
           </div>
         </div>
         <div className="py-8">
-          <h2 className="mb-4 text-2xl font-bold">সম্পর্কিত পণ্য</h2>
+          <h2 className="mb-4 text-2xl font-bold">সম্পর্কিত প্রজেক্ট</h2>
           <ul className="flex w-full gap-4 overflow-x-auto pt-1">
             {relatedProducts.map((p) => (
               <li
